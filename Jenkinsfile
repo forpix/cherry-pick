@@ -28,10 +28,14 @@ pipeline {
             steps {
                 
                     sh 'mvn deploy'
+<<<<<<< HEAD
 
 
 		    sh "date
 
+=======
+		    sh "date
+>>>>>>> 927374decd5822344625b94c209f8cfcd578efb0
                 
             }
         }
