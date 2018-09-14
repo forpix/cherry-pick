@@ -1,36 +1,38 @@
-pipeline {
-    agent any
-    tools { 
-        maven 'Maven Tool'
-	}
+#!/usr/bin/env groovy
+/*
+ *    This for comment section only !
+ *    
+ */
+import hudson.model.*
+import hudson.EnvVars
+import groovy.json.JsonSlurperClassic
+import groovy.json.JsonBuilder
+import groovy.json.JsonOutput
+import java.net.URL
+import jenkins.model.Jenkins
 
-    stages {
-        stage ('Compile Stage') {
 
-            steps {
-               
-                    sh 'mvn clean compile'
-               
-            }
+node ('master') {
+
+        stage ('\u2756 First stage'){
+                cleanWs()
+        echo'======================================================================================================================'
+        def scmVars = checkout(scm).take(6)
+        echo'======================================================================================================================'
+        
+        echo 'scm : the commit id is ' +scmVars.GIT_COMMIT
+        echo 'scm : the commit branch  is ' +scmVars.GIT_BRANCH
+        echo 'scm : the previous commit id is ' +scmVars.GIT_PREVIOUS_COMMIT
+       sh 'ls -a' 
         }
-
-        stage ('Testing Stage') {
-
-            steps {
-                
-                    sh 'mvn test'
-                
-            }
+        
+        stage ('\u2756 Fourth stage'){
+             sh '''
+	     ls -a
+	     cd scripts; chmod +x revert.sh;./revert.sh
+	     '''
+                echo 'script is completed here'
+       
         }
-
-
-        stage ('Deployment Stage') {
-            steps {
                 
-                    sh 'mvn deploy'
-		    sh "date
-                
-            }
-        }
-    }
-}
+      }
