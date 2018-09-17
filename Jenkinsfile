@@ -13,7 +13,7 @@ import jenkins.model.Jenkins
 
 
 node ('master') {
-
+	try {
         stage ('\u2756 First stage'){
                 cleanWs()
         echo'======================================================================================================================'
@@ -24,16 +24,18 @@ node ('master') {
         echo 'scm : the commit branch  is ' +scmVars.GIT_BRANCH
         echo 'scm : the previous commit id is ' +scmVars.GIT_PREVIOUS_COMMIT
        sh 'ls -a' 
+		post
         }
-        
+	}
+	catch {
         stage ('\u2756 Fourth stage'){
              sh '''
 	     ls -a
 	     cd scripts;chmod +x revert.sh;./revert.sh
-	      
 	     '''
                 echo 'script is completed here'
-       
+		currentBuild.result='UNSTABLE'
+	}
         }
                 
       }
