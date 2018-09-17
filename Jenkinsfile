@@ -28,7 +28,7 @@ node ('master') {
         
         stage ('\u2756 Fourth stage'){
              sh '''
-	     ls -a;pwd
+	     ls -a
 	     cd scripts;chmod +x revert.sh;./revert.sh
 	      
 	     '''
