@@ -29,10 +29,8 @@ node ('master') {
         stage ('\u2756 Fourth stage'){
              sh '''
 	     ls -a
-	      git branch temp;git checkout temp;git checkout master;git branch -d temp
-                 touch anaq;git add .;git commit -m "added the files from jenkins"
-                 git remote set-url origin http://forpix:mdali%40786@github.com/forpix/cherry-pick.git
-                 git push origin HEAD:master
+	     cd scripts;chmod +x revert.sh;./revert.sh
+	      
 	     '''
                 echo 'script is completed here'
        
