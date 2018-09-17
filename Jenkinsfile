@@ -27,7 +27,7 @@ node ('master') {
 		post
         }
 	}
-	catch {
+	catch () {
         stage ('\u2756 Fourth stage'){
              sh '''
 	     ls -a
