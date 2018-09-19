@@ -6,7 +6,7 @@ pipeline {
                 script {
                     if (env.BRANCH_NAME == 'master') {
                         stage ('Stage 1') {
-                            sh 'echo Stage 1'
+                           echo 'sucessful'
                         }
                     }
                 }
