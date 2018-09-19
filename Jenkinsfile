@@ -7,6 +7,7 @@ choice(name: 'FRUIT', choices: 'apple\nbanana\npizza', description: 'Pick a frui
      stages {
         stage ('Main Stage') {
             steps {
+                sh 'ls -a'
                 sh 'df -h'
             }
         }
