@@ -1,15 +1,13 @@
 pipeline {
     agent none
+    parameters {
+string(name: 'DEPLOY_ENV', defaultValue: 'TESTING', description: 'Target environment')
+choice(name: 'FRUIT', choices: 'apple\nbanana\npizza', description: 'Pick a fruit')
+}
      stages {
         stage ('Main Stage') {
             steps {
-                script {
-                    if (env.BRANCH_NAME == 'master') {
-                        stage ('Stage 1') {
-                           echo 'sucessful'
-                        }
-                    }
-                }
+                sh 'df -h'
             }
         }
     }
