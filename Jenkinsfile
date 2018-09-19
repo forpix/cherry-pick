@@ -1,41 +1,28 @@
-#!/usr/bin/env groovy
-/*
- *    This for comment section only !
- *    
- */
-import hudson.model.*
-import hudson.EnvVars
-import groovy.json.JsonSlurperClassic
-import groovy.json.JsonBuilder
-import groovy.json.JsonOutput
-import java.net.URL
-import jenkins.model.Jenkins
+pipeline {
+    agent any
 
+    parameters {
+        string(defaultValue: "master", description: 'Which branch?', name: 'BRANCH_NAME')
+    }
 
-node ('master') {
-	try {
-        stage ('\u2756 First stage'){
-                cleanWs()
-        echo'======================================================================================================================'
-        def scmVars = checkout(scm).take(6)
-        echo'======================================================================================================================'
-        
-        echo 'scm : the commit id is ' +scmVars.GIT_COMMIT
-        echo 'scm : the commit branch  is ' +scmVars.GIT_BRANCH
-        echo 'scm : the previous commit id is ' +scmVars.GIT_PREVIOUS_COMMIT
-       sh 'ls -a' 
-		post
+    stages {
+        stage('test'){
+            steps {
+                echo "my branch is " + params.BRANCH_NAME
+            }
         }
-	}
-	catch (e) {
-        stage ('\u2756 Fourth stage'){
-             sh '''
-	     ls -a
-	     cd scripts;chmod +x revert.sh;./revert.sh
-	     '''
-                echo 'script is completed here'
-		currentBuild.result='UNSTABLE'
-	}
+    }
+
+    post {
+        success{
+            script {
+                if( params.BRANCH_NAME == 'master' ){
+                    echo "mail list master"
+                }
+                else {
+                    echo "mail list others"
+                }
+            }
         }
-                
-      }
+    }
+}
