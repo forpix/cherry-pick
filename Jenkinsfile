@@ -6,6 +6,7 @@ choice(name: 'FRUIT', choices: 'apple\nbanana\npizza', description: 'Pick a frui
 }
      stages {
         stage ('Main Stage') {
+            cleanWs()
             steps {
                 sleep 45
                 echo "Will deploy to ${params.DEPLOY_ENV}"
