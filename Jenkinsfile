@@ -23,9 +23,9 @@ stage '\u2756  git checkout scm'
         echo 'scm : the previous commit id is ' +scmVars.GIT_PREVIOUS_COMMIT
        sh 'ls -a'
        properties([[$class: 'BuildBlockerProperty', 
-       blockLevel: <object of type hudson.plugins.buildblocker.BuildBlockerProperty.BlockLevel>,    
+       blockLevel: node,    
        blockingJobs: '.*Dummy-project.*', 
-       scanQueueFor: <object of type hudson.plugins.buildblocker.BuildBlockerProperty.QueueScanScope>, useBuildBlocker: true], 
+       scanQueueFor: 'ALL', useBuildBlocker: true], 
        disableConcurrentBuilds()])
 
        }
