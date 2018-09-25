@@ -1,19 +1,10 @@
 pipeline {
-    agent any
-    parameters {
-string(name: 'DEPLOY_ENV', defaultValue: 'TESTING', description: 'Target environment')
-choice(name: 'FRUIT', choices: 'apple\nbanana\npizza', description: 'Pick a fruit')
-}
-     stages {
-        stage ('Main Stage') {
-            cleanWs()
+    agent any 
+    stages {
+        stage ('check') {
             steps {
-                sleep 45
-                echo "Will deploy to ${params.DEPLOY_ENV}"
-writeFile(file: 'fruit.txt', text: params.FRUIT)
-echo readFile('fruit.txt')
-                sh 'ls -a'
-                sh 'df -h'
+                cleanWs()
+                sh 'pwd;ls -a' 
             }
         }
     }
