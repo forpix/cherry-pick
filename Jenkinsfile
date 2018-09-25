@@ -24,7 +24,7 @@ stage '\u2756  git checkout scm'
        sh 'ls -a'
               stage ('try the blocker') {
        properties([[$class: 'BuildBlockerProperty', 
-                    blockLevel: hudson.plugins.buildblocker.BuildBlockerProperty.BlockLevel, 
+                    blockLevel: object of hudson.plugins.buildblocker.BuildBlockerProperty.BlockLevel, 
                     blockingJobs: '.*Dummy-project.*', 
                     scanQueueFor: object of type hudson.plugins.buildblocker.BuildBlockerProperty.QueueScanScope, 
                     useBuildBlocker: true]])
