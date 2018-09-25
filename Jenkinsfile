@@ -7,6 +7,7 @@ choice(name: 'FRUIT', choices: 'apple\nbanana\npizza', description: 'Pick a frui
      stages {
         stage ('Main Stage') {
             steps {
+                sleep 45
                 echo "Will deploy to ${params.DEPLOY_ENV}"
 writeFile(file: 'fruit.txt', text: params.FRUIT)
 echo readFile('fruit.txt')
