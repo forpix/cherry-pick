@@ -29,7 +29,7 @@ stage '\u2756  git checkout scm'
        disableConcurrentBuilds()])
 
        }
-       catch {
+       catch (e) {
            sh '''
           a=$(git log -n 1 --skip 1 --pretty=format:%H)
           echo 'The previous commit id is $a, Now we reverting to this commit id '
