@@ -24,7 +24,7 @@ stage '\u2756  git checkout scm'
        sh 'ls -a'
               stage ('try the blocker') {
        properties([[$class: 'BuildBlockerProperty', 
-       blockLevel: node,    
+       blockLevel: NODE,    
        blockingJobs: '.*Dummy-project.*', 
        scanQueueFor: 'ALL', useBuildBlocker: true], 
        disableConcurrentBuilds()])
