@@ -24,10 +24,10 @@ stage '\u2756  git checkout scm'
        sh 'ls -a'
               stage ('try the blocker') {
        properties([[$class: 'BuildBlockerProperty', 
-       blockLevel: NODE,    
-       blockingJobs: '.*Dummy-project.*', 
-       scanQueueFor: 'ALL', useBuildBlocker: true], 
-       disableConcurrentBuilds()])
+                    blockLevel: <object of type hudson.plugins.buildblocker.BuildBlockerProperty.BlockLevel>, 
+                    blockingJobs: '.*Dummy-project.*', 
+                    scanQueueFor: <object of type hudson.plugins.buildblocker.BuildBlockerProperty.QueueScanScope>, 
+                    useBuildBlocker: true]])
               }
        }
        catch (e) {
