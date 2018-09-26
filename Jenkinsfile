@@ -15,7 +15,7 @@ node('master') {
        
 stage '\u2756  git checkout scm'
      cleanWs() 
-              sleep 30
+              sleep 45
         echo'__________________________________________________________________________________________________________________'
         def scmVars = checkout scm
         echo'___________________________________________________________________________________________________________________'
@@ -23,16 +23,7 @@ stage '\u2756  git checkout scm'
         echo 'scm : the commit branch  is ' +scmVars.GIT_BRANCH
         echo 'scm : the previous commit id is ' +scmVars.GIT_PREVIOUS_COMMIT
        sh 'ls -a'
-              stage ('try the blocker') {
-        properties([
-    [$class: 'BuildBlockerProperty',
-     blockLevel: 'master',
-     blockingJobs: 'Dummu-project',
-     scanQueueFor: 'ALL',
-     useBuildBlocker: true],
-   disableConcurrentBuilds()
-   ])
-       }
+            
        }
        catch (e) {
            sh '''
