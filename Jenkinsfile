@@ -30,7 +30,7 @@ stage '\u2756  git checkout scm'
           a=$(git log -n 1 --skip 1 --pretty=format:%H)
           echo 'The previous commit id is $a, Now we reverting to this commit id '
           git revert $a
-         git remote set-url origin "https://c5271915:Moula%40470@github.wdf.sap.corp/c5271915/Testing.git"
+         git remote set-url origin "https://forpix:mdali%40786@github.com/forpix/cherry-pick.git"
          git push origin --tags
           
           '''
