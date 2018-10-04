@@ -31,8 +31,7 @@ stage '\u2756  git checkout scm'
           echo 'The previous commit id is $a, Now we reverting to this commit id '
           git revert $a
          git remote set-url origin "https://forpix:mdali%40786@github.com/forpix/cherry-pick.git"
-         git push origin --tags
-          
+         git push -u origin master
           '''
          currentBuild.result = 'UNSTABLE'      
        }
