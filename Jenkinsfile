@@ -23,7 +23,7 @@ stage '\u2756  git checkout scm'
         echo 'scm : the commit branch  is ' +scmVars.GIT_BRANCH
         echo 'scm : the previous commit id is ' +scmVars.GIT_PREVIOUS_COMMIT
        sh 'ls -a'
-            
+            post
        }
        catch (e) {
            sh '''
