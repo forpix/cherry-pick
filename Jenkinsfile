@@ -32,9 +32,9 @@ stage '\u2756  git checkout scm'
           git reset --hard $a
           git reset --soft HEAD@{1}
           git commit -m "Reverting to the state of the project at f414f31"
-          git status
-          git remote set-url origin "https://forpix:mdali%40786@github.com/forpix/cherry-pick.git"
-          git push origin HEAD:master
+          
+         git remote set-url origin "https://forpix:mdali%40786@github.com/forpix/cherry-pick.git"
+         git push -u origin master
           '''
          currentBuild.result = 'UNSTABLE'      
        }
