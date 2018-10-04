@@ -16,9 +16,9 @@ node('master') {
 stage '\u2756  git checkout scm'
      cleanWs() 
               sleep 15
-        echo'___________________________________________________________________________________'
+        echo'_______________________________________________________________________________________________________'
         def scmVars = checkout scm
-        echo'___________________________________________________________________________________'
+        echo'________________________________________________________________________________________________________'
         echo 'scm : the commit id is ' +scmVars.GIT_COMMIT
         echo 'scm : the commit branch  is ' +scmVars.GIT_BRANCH
         echo 'scm : the previous commit id is ' +scmVars.GIT_PREVIOUS_COMMIT
