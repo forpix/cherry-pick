@@ -28,8 +28,11 @@ stage '\u2756  git checkout scm'
        catch (e) {
            sh '''
           a=$(git log -n 1 --skip 1 --pretty=format:%H)
-          echo 'The previous commit id is $a, Now we reverting to this commit id '
-          git revert $a
+          echo 'The previous commit id is "$a", Now we reverting to this commit id '
+          git reset --hard $a
+          git reset --soft HEAD@{1}
+          git commit -m "Reverting to the state of the project at f414f31"
+          
          git remote set-url origin "https://forpix:mdali%40786@github.com/forpix/cherry-pick.git"
          git push -u origin master
           '''
